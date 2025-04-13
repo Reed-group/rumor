@@ -1,0 +1,9 @@
+{
+  "tasks": {
+    "start": "deno run --allow-read --allow-env --allow-net main.ts & deno run --allow-read --allow-env --allow-net wss.js"
+  },
+  "imports": {
+    "express": "npm:express@^5.1.0",
+    "wscat": "npm:wscat@^6.0.1"
+  }
+}
