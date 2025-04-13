@@ -1,5 +1,5 @@
 # rumor
-the rumor project 
+The rumor project @ reed.
 
 
 wss://rumor.reedsite.net
