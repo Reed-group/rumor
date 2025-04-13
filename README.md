@@ -1,0 +1,2 @@
+# rumor
+the rumor project 
