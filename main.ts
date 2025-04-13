@@ -1,9 +1,7 @@
 // @deno-types="npm:@types/express@4.17.15"
 import express from "npm:express";
 import { WebSocketServer } from "npm:ws";
-const app = express();
 const rumor = express();
-import api from "./api.ts";
 import fs from "node:fs";
 import path from "node:path";
 import os from "node:os";
@@ -11,11 +9,6 @@ import https from "node:https";
 
 const combcert = fs.readFileSync(path.resolve(os.homedir(), "Desktop", "=key", "certcf.pem"));
 const robots = path.resolve(os.homedir(), "Desktop", "=key", "robots.txt");
-
-const webserver = https.createServer({
-  cert: combcert,
-  key: combcert,
-}, app)
 
 let d = "n"
 const server = https.createServer({
@@ -60,12 +53,4 @@ rumor.get("/robots.txt", (_req, res) => {
    }
 });
 
-app.use("/api", api);
-app.get("/", (_req, res) => {
-  res.send("not set up");
-  // res.sendFile(`../pages/landing.html`);
-});
-//let oldwsglobal = "none"
-
-webserver.listen(8443); // web
 console.log("RUMOR online and ready!");
