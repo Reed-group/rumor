@@ -7,15 +7,10 @@ import path from "node:path";
 import os from "node:os";
 import https from "node:https";
 
-const combcert = fs.readFileSync(path.resolve(os.homedir(), "Desktop", "=key", "certcf.pem"));
-const robots = path.resolve(os.homedir(), "Desktop", "=key", "robots.txt");
-
 let d = "n"
 const server = https.createServer({
-  cert: combcert,
-  key: combcert,
 }, rumor)
-server.listen(8000, () => console.log('SECServer running on port 8000'));
+server.listen(9999, () => console.log('SECServer running on port 9999'));
 
 const wss = new WebSocketServer({ server });
 
@@ -43,14 +38,6 @@ wss.on('connection', function connection(ws) {
   });
 
   ws.send('{"version": "3"}');
-});
-
-rumor.get("/robots.txt", (_req, res) => {
-   try {
-   res.sendFile(robots);
-   } catch {
-    // nothing
-   }
 });
 
 console.log("RUMOR online and ready!");
